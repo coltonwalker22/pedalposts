@@ -1,0 +1,28 @@
+.form-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    width: 200px;
+}
+
+.form-container input{
+    margin-bottom: 30px;
+}
+
+.form-container textarea{
+    margin-bottom: 30px;
+    resize: none;
+    height: 150px;
+    width: 600px;
+
+}
+
+.input-title{
+    height: 30px;
+    font-size: 29px;
+}
+
+.input-imgUrl{
+    width: 300px;
+}

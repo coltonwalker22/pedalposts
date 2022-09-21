@@ -1,0 +1,100 @@
+
+.post-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 100px;
+    width: 600px;
+    margin: 100px 100px;
+    
+}
+
+
+.publicPost{
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    border: 1px solid black;
+    padding: 20px 20px;
+    border-radius: 10px;
+    background-color: #97CAEF;
+    box-shadow: 6px 7px 10px;
+    margin-bottom: 80px;
+    
+}
+
+.title{
+    text-align: center;
+    font-family: 'Passion One', cursive;
+    letter-spacing: 3px;
+    cursor: pointer;
+    
+}
+
+.description{
+    font-size: 16px;
+    text-align: center;
+}
+
+.image-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 250px;
+    width: 400px;
+    cursor: pointer;
+}
+
+.public-post-img{
+    display: flex;
+    margin: 0 auto;
+    max-width: 300px;
+    max-height: 300px;
+    border-radius: 10px;
+}
+
+.comment-button{
+    display: flex;
+    justify-content: center;
+    border: 1px solid black;
+    border-radius: 10px;
+    height: 20px;
+    width: 160px;
+    background-color: #CAFAFE;
+    cursor: pointer;
+    box-shadow: 1px 1px 5px;
+}
+
+.delete-button{
+    display: flex;
+    justify-content: center;
+    border: 1px solid black;
+    border-radius: 10px;
+    height: 20px;
+    width: 160px;
+    background-color: #FC4445;
+    cursor: pointer;
+    box-shadow: 1px 1px 5px;
+    margin-bottom: 10px;
+}
+
+.publicPost > p{
+    text-align: center;
+}
+
+.add-comment{
+    margin-right: 20px;
+}
+
+.publicPost > h3{
+    text-align: center;
+}
+
+/*
+red #FC4445
+teal blue #3FEEE6
+cool blue #55BCC9
+blue #97CAEF
+light blue #CAFAFE
+
+*/
+ 

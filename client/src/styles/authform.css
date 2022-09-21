@@ -1,0 +1,65 @@
+
+
+.auth-container h1 {
+    display: flex;
+    justify-content: center;
+    font-size:80px;
+    font-family: 'Passion One', cursive;
+    letter-spacing: 10px;
+}
+
+.auth-container form {
+    display: grid;
+    margin: 0 700px;
+    row-gap: 30px;
+    border: 1px solid black;
+    padding: 40px 40px;
+    border-radius: 10px;
+    background-color: #CAFAFE;
+
+}
+
+.form-input{
+    height: 40px;
+    width: 300px;
+    margin: 0 auto;
+    font-size: 38px;
+}
+
+
+.auth-container button {
+    margin: 0 auto;
+    width: 200px;
+}
+
+.auth-container p {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 30px;
+    color:rgb(0, 0, 0);
+    font-weight: bold;
+    background-color: #CAFAFE;
+    border: 1px solid black;
+    width: 120px;
+    height: 50px;
+    padding: 10px 10px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.auth-container p:hover{
+   background-color: #97CAEF;
+    transition-duration: .6s
+
+}
+
+/*
+red #FC4445
+teal blue #3FEEE6
+cool blue #55BCC9
+blue #97CAEF
+light blue #CAFAFE
+
+*/
