@@ -1,4 +1,5 @@
-import React, {useState, useContext} from 'react'
+import React, {useState, useContext} from 'react';
+import { Card, Button} from '@mantine/core';
 // import Video from "./video/psychVideo.mp4"
 
 import AuthForm from '../components/AuthForm'
@@ -39,33 +40,30 @@ export default function Auth() {
 
   return (
     <div className="auth-container">
-        {/* <video className="auth-video" autoPlay loop muted src={Video}></video> */}
-        <h1>PedalPosts</h1>
-        { !toggle ?
-            <>
-                <AuthForm
-                    handleChange={handleChange}
-                    handleSubmit={handleSignup}
-                    inputs={inputs}
-                    btnText="Sign up"
-                    errMsg={errMsg}
+            { !toggle ?
+                <>
+                    <AuthForm
+                        handleChange={handleChange}
+                        handleSubmit={handleSignup}
+                        inputs={inputs}
+                        btnText="Sign up"
+                        errMsg={errMsg}
+                        />
+                        <Button onClick={toggleForm} >Already a member?</Button>
+                </>
+            :
+                <>
+                    <AuthForm
+                        handleChange={handleChange}
+                        handleSubmit={handleLogin}
+                        inputs={inputs}
+                        btnText="Login"
+                        errMsg={errMsg}
                     />
-                    <p onClick={toggleForm}>Already a member?</p>
-            </>
-        :
-            <>
-                <AuthForm
-                    handleChange={handleChange}
-                    handleSubmit={handleLogin}
-                    inputs={inputs}
-                    btnText="Login"
-                    errMsg={errMsg}
-                />
-                <p onClick={toggleForm}>Not a member?</p>
-            
-            </>
-        }
+                    <Button className="toggle-button" onClick={toggleForm}>Not a member?</Button>
+                
+                </>
+            }
     </div>
-  
   )
 }

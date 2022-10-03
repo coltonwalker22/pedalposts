@@ -1,20 +1,31 @@
-import React, {useContext} from 'react'
+import React, {useContext, useState} from 'react'
 import {BrowserRouter as Router, Routes, Route, Navigate} from 'react-router-dom';
 import {UserContext} from './context/UserProvider.js'
 
+import {
+  AppShell,
+  Navbar,
+  Header,
+  Footer,
+  Aside,
+  Text,
+  MediaQuery,
+  Burger,
+  useMantineTheme,
+} from '@mantine/core';
+
 import ProtectedRoute from './components/ProtectedRoute.js'
-import Navbar from './components/Navbar.js'
 
 import Auth from './pages/Auth'
 import Profile from './pages/Profile'
 import Public from './pages/Public'
 import PostPage from './pages/PostPage'
+import HeaderLogoutButton from './components/HeaderLogoutButton.js'
 
 import './App.css';
 import './styles/navbar.css'
 import './styles/auth.css'
 import './styles/authform.css'
-import './styles/postform.css'
 import './styles/profile.css'
 import './styles/post.css'
 import './styles/publicpost.css'
@@ -22,11 +33,43 @@ import './styles/postpage.css'
 
 function App() {
   const { token, logout } = useContext(UserContext)
+  const theme = useMantineTheme();
+  const [opened, setOpened] = useState(false);
+  return (     
+   <Router>
+    <AppShell
+      styles={{
+        main: {
+          background: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0],
+        },
+      }}
+      fixed
+      navbarOffsetBreakpoint="sm"
+      asideOffsetBreakpoint="sm"
+      navbar={
+        <Navbar p="md" hiddenBreakpoint="sm" hidden={!opened} width={{ sm: 150, lg: 300 }}>
+                      <HeaderLogoutButton logout={logout} />
+        </Navbar>
+      }
+      header={
+        <Header height={70} p="md">
+          <div style={{ display: 'flex', alignItems: 'center', height: '100%' }}>
+            <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
+              <Burger
+                opened={opened}
+                onClick={() => setOpened((o) => !o)}
+                size="sm"
+                color={theme.colors.gray[6]}
+                mr="xl"
+              />
+            </MediaQuery>
 
-  return (
-<Router>
-      { token && <Navbar logout={logout} /> }
-      <Routes>
+            <h1 className="gradient-title">PedalPosts</h1>
+          </div>
+        </Header>
+      }
+    >
+         <Routes>
         <Route 
         path="/" 
         element={ token ? <Navigate to="/profile"/> : <Auth />}/>
@@ -55,6 +98,7 @@ function App() {
           } 
          />
       </Routes>
+    </AppShell>
     </Router>
   );
 }

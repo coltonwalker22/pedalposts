@@ -1,64 +1,31 @@
-import React, {useState, useContext, useEffect} from 'react'
+import React, { useContext, useEffect} from 'react'
 import {UserContext} from '../context/UserProvider.js'
+import {useNavigate} from 'react-router-dom'
+import {Card, Text, Button, Image} from '@mantine/core';
 
 
 export default function Post(props) {
-    const { user, title, imgUrl, description, datePosted, _id, username } = props
+    const { title, imgUrl, datePosted, _id, username } = props
 
-    const { userAxios, getUserPosts } = useContext(UserContext)
+    const navigate = useNavigate();
 
+    const {getUserPosts} = useContext(UserContext)
 
-    const [showComments, setShowComments] = useState(false)
-    const [inputs, setInputs] = useState({ comment: "" })
-    const [postComments, setPostComments] = useState([])
-
-    function newGetComments(postId) {
-        userAxios.get(`api/pedalpost/comments/${postId}/comments`)
-            .then(res => setPostComments(res.data))
-            .catch(err => console.log(err.response.data.errMsg))
-    }
-
-    function addPostComment(postId, newComment) {
-        userAxios.post(`api/pedalpost/comments/${postId}/comments`, newComment)
-            .then(res => setPostComments(prevState => [...prevState, res.data]))
-            .catch(err => console.log(err.response.data.errMsg))
-    }
-
-    useEffect(() => {
-        newGetComments(_id)
+    useEffect(() => {     
         getUserPosts(_id)
           // eslint-disable-next-line
     }, [])
 
-    function onChange(e){
-        const { name, value } = e.target
-        setInputs(prevState => ({ ...prevState, [name]: value}))
-    }
-
-    function submission(e){
-        e.preventDefault()
-        addPostComment(_id, inputs)
-    }
-
 
     return(
-     <div className="post">
-        <h1>{title}</h1>
-        <div><img className="post-img" src={imgUrl}></img></div>
-        <p>{description}</p>
-        <h3>{new Date(datePosted).toLocaleDateString()}</h3>
-        <div>
-            {postComments.map(comment => <div>{comment.comment}</div>)}
-        </div> 
-        <form onSubmit={submission}>
-            <input 
-            onChange={onChange}
-            name="comment"
-            type="text"
-            value={inputs.comment}
-            placeholder="Enter comment here..."/>
-            <button>Submit</button>
-        </form> 
- </div>
+        <Card shadow="sm" p="lg" radius="md" withBorder style={{margin:20, width: 300}}>
+        <Card.Section>
+            <Image height={300} onClick={()=>navigate(`/postpage/:${_id}`)} src={imgUrl}/>
+        </Card.Section>
+    <Text align="center" size="xl" onClick={()=>navigate(`/postpage/:${_id}`)}>{title}</Text>
+    <Text> posted by: {username}</Text>
+    <Text> posted on {new Date(datePosted).toLocaleDateString()}</Text>
+    <Button style={{marginLeft: 20, marginTop: 20}}  onClick={()=>navigate(`/postpage/:${_id}`)} variant="gradient" gradient={{ from: 'indigo', to: 'cyan' }}>Go To Page</Button>
+    </Card>
         )
 }

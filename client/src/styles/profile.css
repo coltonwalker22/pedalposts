@@ -1,18 +1,13 @@
-.profile h1{
+.profile{
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
     text-align: center;
+    align-items: center;
 }
 
-.issue-title{
-    text-align: center;
-    margin-top: 60px;
-    font-size: 30px;
-}
-
-.profile p{
+.post-list{
     display: flex;
     margin: 0 auto;
-    width: 400px;
-    margin-bottom: 30px;
-    font-size: 20px;
+    justify-content: center;
 }
-

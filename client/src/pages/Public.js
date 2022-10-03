@@ -1,6 +1,7 @@
 import React, {useContext, useEffect} from 'react'
 import {UserContext} from '../context/UserProvider.js'
 import PublicPosts from '../components/PublicPosts.js'
+import {Grid} from '@mantine/core';
 
 
 
@@ -19,6 +20,8 @@ useEffect(() => {
 }, [allPosts.length])
 
   return (
-    <div className="post-container">{postDisplay}</div>
+    <Grid justify="space-around" >
+     {postDisplay}
+    </Grid>
   )
 }

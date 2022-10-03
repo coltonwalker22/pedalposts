@@ -2,12 +2,10 @@ import React, {useEffect, useState, useContext} from 'react'
 import { UserContext } from '../context/UserProvider.js'
 import {useParams} from 'react-router-dom'
 import Comment from '../components/Comment.js'
-
+import {Card, Button, Text, Textarea} from '@mantine/core';
+import { IconMessageCircle2 } from '@tabler/icons';
 
 export default function PostPage(props) {
-
-    let params = useParams();
-    let post_id = useParams();
     let {id} = useParams();
     let postId = id.slice(1)
 
@@ -103,28 +101,30 @@ console.log("posts", posts)
 console.log("editcomment:", editInput.editComment)
 
   return (
-    <div className="postpage-background">
-        <div className="postpage-container">
+    <div className="postpage-container">
             <h1 className="postpage-title">{post.title}</h1>
-            <p> posted by: {post.user?.username}</p>
+            <h2> posted by: {post.user?.username}</h2>
             <h3 className="postpage-date"> posted on {new Date(post.datePosted).toLocaleDateString()}</h3>
             <div><img className="postpage-img" src={post.imgUrl}></img></div>
-            <p className="postpage-description">{post.description}</p>
+            <Text size="xl" align="center">{post.description}</Text>
                 {postComments.map(comment => <Comment key={comment._id} comment={comment} newGetComments={newGetComments} allUsers={allUsers} post={post} updateComment={updateComment} user={user} />)}        
-            <div className="postpage-form-section">
+            <Card shadow="sm" radius="md" withBorder className="add-comment-card">
                 <form onSubmit={submitComment}>
-                    <textarea
+                    <Textarea
+                    autosize
+                    minRows={2}
+                    maxRows={6}
+                    maxlength="300"
                     type="text"
                     name="comment"
                     onChange={onChange}
                     value={inputs.comment}
                     placeholder="add Comment"
-                    className="postpage-add-comment"
+                    style={{width: 290, marginBottom: 20}}
                     />
-                    <button>send</button>
+                    <Button leftIcon={<IconMessageCircle2 size={14} />} type="submit">submit</Button>
                 </form>
-            </div>
-        </div>
+        </Card>
     </div>
 
   )

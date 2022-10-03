@@ -1,39 +1,25 @@
-
-.postpage-background{
-    display: inline-block;
-    width: 100%;
-    background-image: url('http://localhost:3000/img/psych.jpeg');
-    background-size: cover;
-}
-
 .postpage-container{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    border: 1px solid black;
-    width: 1200px;
+    margin: 20 0;
     text-align: center;
-    margin: 0 auto;
-    margin-top: 50px;
-    background-color: #CAFAFE;
-    border-radius: 10px;
-    box-shadow: 2px 2px 10px; 
-    margin-bottom: 50px;
     
 }
 
 .postpage-title{
-font-family: 'Passion One', cursive;
-font-size: 70px;
-margin-bottom: 0px;
+    font-family: 'Passion One', cursive;
+    font-size: 70px;
+    margin-bottom: 0px;
 }
 
 .postpage-img{
     display: flex;
     margin: 0 auto;
-    max-width: 90%;
+    max-width: 100%;
     max-height: 100%;
     border-radius: 10px;
+    width: 400px
 }
 
 .postpage-description{
@@ -43,11 +29,13 @@ margin-bottom: 0px;
     width: 600px;
     margin-top: 20px;
     margin-bottom: 20px;
+    font-size:30px
 }
 
 .postpage-comment{
+    display: flex;
     border: 1px solid black;
-    width: 600px;
+    width: 350px;
     margin: 0 auto;
     margin-bottom: 20px;
     border-radius: 10px;
@@ -57,9 +45,9 @@ margin-bottom: 0px;
 .postpage-comment-user{
     display: flex;
     font-family: 'Passion One', cursive;
-    font-size: 20px;
-    margin-left: 15px;
-    margin-top: 10px;
+    font-size: 40px;
+    margin: 0;
+   
 
 }
 
@@ -77,19 +65,24 @@ margin-bottom: 0px;
     font-size: 10px;
 }
 
-.postpage-form-section{
-    display: flex;
-    margin: 0 auto;
-    border: 1px solid black;
-    margin-bottom: 10px;
-    width: 400px;
-    padding: 20px 20px;
-    border-radius: 10px;
-    box-shadow: 5px 2px 10px;
-}
 
 .postpage-form-section textarea{
     resize: none;
     width: 400px;
     height: 100px;
+}
+
+.comment-card{
+    display: flex;
+    width: 330px;
+    flex-direction: column;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+.add-comment-card{
+    display: flex;
+    margin: 0 auto;
+    margin-top: 20px;
+    width: 320px;
 }
