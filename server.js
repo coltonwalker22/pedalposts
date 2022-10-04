@@ -4,6 +4,7 @@ require('dotenv').config()
 const morgan = require('morgan')
 const mongoose = require('mongoose')
 const {expressjwt: jwt} = require('express-jwt')
+const path = require("path")
 
 app.use(express.json())
 app.use(morgan('dev'))
@@ -21,6 +22,12 @@ app.use('/api', jwt({secret: process.env.SECRET, algorithms: ["HS256"]}))
 app.use('/api/user', require('./routes/userRouter.js'))
 app.use('/api/pedalpost', require('./routes/pedalpostRouter.js'))
 app.use('/api/pedalpost/comments', require('./routes/commentRouter.js'))
+app.use(express.static(path.join(__dirname, "client", "build")))
+
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+});
+
 
 app.listen(process.env.MY_VAR || 9000, () => {
     console.log('server is running on local port 9000')
