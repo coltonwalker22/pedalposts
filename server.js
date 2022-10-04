@@ -29,6 +29,6 @@ app.get("*", (req, res) => {
 });
 
 
-app.listen(process.env.MY_VAR || 9000, () => {
+app.listen(process.env.PORT || 9000, () => {
     console.log('server is running on local port 9000')
 })
